@@ -2,10 +2,13 @@ from bottle import Bottle, response
 from sentry_sdk.integrations.bottle import BottleIntegration
 import sentry_sdk
 import os
+from dotenv import load_dotenv
 
+
+load_dotenv()
 # интеграция с Sentry
 sentry_sdk.init(
-    "https://efabe5358bdd4b4faf6ecc07ba46318a@o520991.ingest.sentry.io/5632098",
+    dsn=os.environ['SENTRY'],
     integrations=[BottleIntegration()]
 )
 
